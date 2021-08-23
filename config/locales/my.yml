@@ -1,0 +1,10 @@
+my:
+  greetings: "Selamat Datang ke Halaman Sampel"
+  sample_app: "Halaman Sampel"
+  home: "Utama"
+  help: "Bantu"
+  contact: "Kenalan"
+
+  helpers:
+    application_helper:
+  rails_app_title : "Tutorial Halaman Sampel Ruby atas Keretapi"
