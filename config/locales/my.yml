@@ -36,3 +36,7 @@ my:
   profile: "Profil"
   setting: "kemasan"
   remember: "Ingati saya"
+
+  check: "Sila semak email untuk aktifkan akaun anda."
+  activated: "Akaun telah aktif"
+  invalid_link: "Pautan pengaktifan tidak sah"
