@@ -1,10 +1,37 @@
-bm:
-  greetings: "Selamat Datang ke Halaman Sampel"
-  sample_app: "Halaman Sampel"
-  home: "Utama"
-  help: "Bantu"
-  contact: "Kenalan"
+my:
+  title: "Aplikasi Sampel"
+  greet1: "Selamat datang ke halaman utama"
+  greet2: " aplikasi sampel."
+  greet3: "Sila dapatkan bantuan melalui Ruby dalam Latihan Rails"
+  greet4: "Untuk dapatkan pertolongan dalam aplikasi sampel ini, sila rujuk "
+  home: "Halaman Utama"
+  help: "Bantuan"
+  log_in: "Log masuk"
+  log_out: "Log keluar"
 
-  helpers:
-    application_helper:
-  rails_app_title : "Tutorial Halaman Sampel Ruby atas Keretapi"
+  full_stop: "."
+
+  english: "English"
+  malaysia: "Malaysia"
+  en_switch: "Beralih kepada English"
+  my_switch: "Beralih kepada Malaysia"
+  rails_help: "Halaman Bantuan Latihan Rails"
+  rails_tuto: "Ruby dalam Latihan Rails"
+
+  sign_up: "Pendaftaran"
+  confirmation: "Pengesahan Katakunci"
+  create_my_account: "Mencipta Akaun"
+  name: "Nama"
+  email: "Email"
+  password: "Katakunci"
+
+  user_not_found: "Pengguna tidak dijumpai"
+  welcome_greet: "Selamat datang ke Aplikasi Sampel!"
+
+  invalid_email_password: "Email/Katakunci tidak wujud!"
+  new_user: "Pengguna baru"
+  sign_up_now: "Daftar sekarang"
+
+  account: "Akaun"
+  profile: "Profil"
+  setting: "kemasan"
