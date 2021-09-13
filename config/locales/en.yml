@@ -35,3 +35,7 @@ en:
   profile: "Profile"
   setting: "Setting"
   remember: "Remember me on this computer"
+
+  check: "Please check your email to activate your account."
+  activated: "Account activated!"
+  invalid_link: "Invalid activation link"
