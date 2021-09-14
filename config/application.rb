@@ -11,5 +11,7 @@ module SampleApp1
     # Initialize configuration defaults for originally generated Rails version.
     config.i18n.available_locales = [:en, :my]
     config.i18n.default_locale = :en
+    # Include the authenticity token in remote forms.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

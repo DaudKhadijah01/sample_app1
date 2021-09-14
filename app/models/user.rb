@@ -3,12 +3,38 @@ class User < ApplicationRecord
   before_save {self.email = email.downcase}
   before_create :create_activation_digest
 
+  has_many :microposts, dependent: destroy
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
+  attr_accessor :remember_token, :activation_token, :reset_token
+  before_save {self.email = email.downcase}
+  before_create :create_activation_digest
+
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
   has_secure_password
+
+  def follow other_user #Follows a user.
+    following << other_user
+  end
+
+  def unfollow other_user #Unfollows a user.
+    following.delete other_user
+  end
+
+  def following? other_user #Returns if the current user is following the other_user or not
+    following.include? other_user
+  end
 
     class << self
     def new_token
@@ -53,7 +79,7 @@ class User < ApplicationRecord
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
-    update_attributes(reset_sent_at: Time.zone.now, reset_digest: User.digest(reset_token))
+    user.update_attributes activated_at: Time.zone.now, activated: true
   end
 
   # Sends password reset email.
@@ -63,6 +89,19 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
+  # Follows a user.
+  def follow(other_user)
+    following << other_user
   end
 
   private
