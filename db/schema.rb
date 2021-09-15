@@ -9,28 +9,14 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 2021_09_13_071044) do
 
-  create_table "microposts", charset: "utf8mb3", force: :cascade do |t|
-    t.text "content"
-    t.bigint "user_id"
+ActiveRecord::Schema.define(version: 2021_09_14_032332) do
+
+  create_table "relationships", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb3", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
-    t.boolean "admin", default: false
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "reset_digest"
-  end
-
-  add_foreign_key "microposts", "users"
 end
